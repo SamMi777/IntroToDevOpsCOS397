@@ -28,12 +28,10 @@ jobs:
       run: |
         python -m flake8 . --show-source --statistics
 
-
   test:
-    # only run the code testing if linting passed
-    needs: linting
+    needs: linting  # Only run testing if linting passes
     strategy:
-	  matrix:
+      matrix:
         python-version: [3.9, 3.10]
     runs-on: ubuntu-latest
     steps:
@@ -50,10 +48,8 @@ jobs:
       run: |
         python -m pytest
 
-
   packaging:
-    # only run the packaging if testing passed
-    needs: test
+    needs: test  # Only run packaging if tests pass
     strategy:
       matrix:
         python-version: [3.9, 3.10]
@@ -73,8 +69,7 @@ jobs:
     - name: Build package
       run: |
         python -m build
-        # see that the dist directory contains the wheel
-        ls -la dist
+        ls -la dist  # Verify the dist directory contains the wheel
     - name: Upload package
       if: github.event_name == 'push'
       uses: actions/upload-artifact@v3
