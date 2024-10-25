@@ -33,13 +33,10 @@ def bubble(int_list):
 
     Returns:
         list: The sorted list of integers
-
-    Raises:
-        IndexError: If the length of the list is invalid
     """
     n = len(int_list)
-    if n < 1:
-        raise IndexError("invalid list length")
+    if n <= 1:
+        return int_list
     for i in range(n-1):
         for j in range(n-i-1):
             if int_list[j] > int_list[j+1]:
@@ -50,13 +47,30 @@ def bubble(int_list):
 
 def quick(int_list):
     """
-    qsort docstring
+    Sorts a list of integers in place using the quicksort algorithm
+
+    This algorithm selects a pivot element from the list and uses the
+    remaining elements to create two sub-arrays. The sub-arrays are then sorted
+    recursively.
+
+    Args:
+        int_list (list): A list of integers to be sorted
+
+    Returns:
+        list: The sorted list of integers
     """
-    print("quick sort")
+    n = len(int_list)
+    if n <= 1:
+        return int_list
+    pivot = int_list[n // 2]
+    left = [ i for i in int_list if i < pivot]
+    middle = [i for i in int_list if i == pivot]
+    right = [i for i in int_list if i > pivot]
+    # print("quick sort")
+    return quick(left) + middle + quick(right)
 
 
 def insertion(int_list):
     """
     insertion docstring
     """
-    print("insertion sort")
