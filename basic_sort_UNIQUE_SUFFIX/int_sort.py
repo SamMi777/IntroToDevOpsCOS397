@@ -66,11 +66,30 @@ def quick(int_list):
     left = [ i for i in int_list if i < pivot]
     middle = [i for i in int_list if i == pivot]
     right = [i for i in int_list if i > pivot]
-    # print("quick sort")
+    print("quick sort")
     return quick(left) + middle + quick(right)
 
 
 def insertion(int_list):
     """
-    insertion docstring
+    Sorts a list of numbers using the insertion sort algorithm
+
+    This algorithm steps through the list, removes each element and
+    reinserts it in its correct sorted position.
+
+    Args:
+        int_list (list): A list of integers to be sorted
+
+    Returns:
+        list: The sorted list of integers
     """
+    n = len(int_list)
+    for i in range(1,n):
+        key = int_list[i]
+        j = i -1
+        while j >= 0 and int_list[j] > key:
+            int_list[j+1] = int_list[j]
+            j -= 1
+        int_list[j + 1] = key
+    print("insertion sort")
+    return int_list
