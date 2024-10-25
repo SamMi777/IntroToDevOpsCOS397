@@ -17,7 +17,7 @@
 # =========================================================================
 
 """
-This module sorts lists of integers...
+This module sorts lists of integers..
 """
 
 
