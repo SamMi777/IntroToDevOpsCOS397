@@ -25,7 +25,7 @@ def is_sorted(int_list):
     """
     Testing oracle.
     """
-    return int_list == sorted(int_list)
+    return list(int_list) == sorted(int_list)
 
 
 @pytest.fixture
