@@ -37,10 +37,10 @@ def bubble(int_list):
     n = len(int_list)
     if n <= 1:
         return int_list
-    for i in range(n-1):
-        for j in range(n-i-1):
-            if int_list[j] > int_list[j+1]:
-                int_list[j],int_list[j+1] = int_list[j+1], int_list[j]
+    for i in range(n - 1):
+        for j in range(n - i - 1):
+            if int_list[j] > int_list[j + 1]:
+                int_list[j], int_list[j + 1] = int_list[j + 1], int_list[j]
     print("bubble sort")
     return int_list
 
@@ -63,7 +63,7 @@ def quick(int_list):
     if n <= 1:
         return int_list
     pivot = int_list[n // 2]
-    left = [ i for i in int_list if i < pivot]
+    left = [i for i in int_list if i < pivot]
     middle = [i for i in int_list if i == pivot]
     right = [i for i in int_list if i > pivot]
     print("quick sort")
@@ -84,11 +84,11 @@ def insertion(int_list):
         list: The sorted list of integers
     """
     n = len(int_list)
-    for i in range(1,n):
+    for i in range(1, n):
         key = int_list[i]
-        j = i -1
+        j = i - 1
         while j >= 0 and int_list[j] > key:
-            int_list[j+1] = int_list[j]
+            int_list[j + 1] = int_list[j]
             j -= 1
         int_list[j + 1] = key
     print("insertion sort")
