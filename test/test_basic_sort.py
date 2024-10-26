@@ -18,13 +18,14 @@
 
 import pytest
 import numpy as np
+from basic_sort_UNIQUE_SUFFIX.int_sort import bubble, quick, insertion
 
 
 def is_sorted(self, int_list):
     """
     Testing oracle.
     """
-    return True
+    return int_list == sorted(int_list)
 
 
 @pytest.fixture
@@ -34,12 +35,21 @@ def int_lists():
 
 
 def test_bubble(int_lists):
-    assert True
+
+    for int_list in int_lists:
+        sorted_list = bubble(int_list[:])
+        assert is_sorted(sorted_list), "Bubble sort failed."
 
 
 def test_quick(int_lists):
-    assert True
+
+    for int_list in int_lists:
+        sorted_list = quick(int_list[:])
+        assert is_sorted(sorted_list), "Quick sort failed."
 
 
 def test_insertion(int_lists):
-    assert True
+
+    for int_list in int_lists:
+        sorted_list = insertion(int_list[:])
+        assert is_sorted(sorted_list), "Insertion sort failed."
