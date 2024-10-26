@@ -39,8 +39,8 @@ def bubble(int_list):
         return int_list
     for i in range(n-1):
         for j in range(n-i-1):
-            if int_list[j] > int_list[j+1]:
-                int_list[j],int_list[j+1] = int_list[j+1], int_list[j]
+            if int_list[j] > int_list[j + 1]:
+                int_list[j],int_list[j + 1] = int_list[j + 1], int_list[j]
     print("bubble sort")
     return int_list
 
@@ -86,9 +86,9 @@ def insertion(int_list):
     n = len(int_list)
     for i in range(1,n):
         key = int_list[i]
-        j = i -1
+        j = i - 1
         while j >= 0 and int_list[j] > key:
-            int_list[j+1] = int_list[j]
+            int_list[j + 1] = int_list[j]
             j -= 1
         int_list[j + 1] = key
     print("insertion sort")
