@@ -32,8 +32,9 @@ jobs:
     needs: linting  # Only run testing if linting passes
     strategy:
       matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: ['3.9', '3.10']
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
@@ -52,8 +53,9 @@ jobs:
     needs: test  # Only run packaging if tests pass
     strategy:
       matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: ['3.9', '3.10']
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
       with:
