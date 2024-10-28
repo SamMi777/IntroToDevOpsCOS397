@@ -71,7 +71,7 @@ jobs:
     - name: Build package
       run: |
         python -m build
-        ls -la dist  # Verify the dist directory contains the wheel
+        if [[ "${{ matrix.os }}" == "windows-latest" ]]; then dir dist; else ls -la dist; fi
     - name: Upload package
       if: github.event_name == 'push'
       uses: actions/upload-artifact@v3
