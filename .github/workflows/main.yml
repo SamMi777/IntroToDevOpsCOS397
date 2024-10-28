@@ -71,10 +71,18 @@ jobs:
     - name: Build package
       run: |
         python -m build
-        if [[ "${{ matrix.os }}" == "windows-latest" ]]; then dir dist; else ls -la dist; fi
+    - name: Verify build output (Linux/macOS)
+      if: runner.os != 'Windows'
+      run: |
+        ls -la dist
+    - name: Verify build output (Windows)
+      if: runner.os == 'Windows'
+      run: |
+        dir dist
     - name: Upload package
       if: github.event_name == 'push'
       uses: actions/upload-artifact@v3
       with:
-        name: python-packages
+        name: python-packages-${{ matrix.os }}-${{ matrix.python-version }}
         path: dist
+
